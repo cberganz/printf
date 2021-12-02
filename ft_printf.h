@@ -25,7 +25,7 @@ void	case_c(int c, int fd, int *len);
 void	case_i_d(int n, int fd, int *len);
 void	case_s(char *s, int fd, int *len);
 void	case_u(unsigned int n, int fd, int *len);
-void	case_p(unsigned long nbr, char *base, int *len, int check);
+void	case_p(unsigned long nbr, int *len, int check);
 void	case_hex(unsigned int nbr, char *base, int *len);
 
 #endif

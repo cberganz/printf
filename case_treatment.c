@@ -19,7 +19,7 @@ size_t	case_treatment(int c, va_list args, int *len)
 	else if (c == 's')
 		case_s(va_arg(args, char *), 1, len);
 	else if (c == 'p')
-		case_p(va_arg(args, unsigned long), "0123456789abcdef", len,0);
+		case_p(va_arg(args, unsigned long), len, 0);
 	else if (c == 'd' || c == 'i')
 		case_i_d(va_arg(args, int), 1, len);
 	else if (c == 'u')
