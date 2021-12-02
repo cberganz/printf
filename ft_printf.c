@@ -6,7 +6,7 @@
 /*   By: cberganz <cberganz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 13:27:36 by cberganz          #+#    #+#             */
-/*   Updated: 2021/12/01 19:44:20 by cberganz         ###   ########.fr       */
+/*   Updated: 2021/12/02 15:36:51 by cberganz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	ft_printf(const char *s, ...)
 {
 	va_list	args;
-	size_t		pos;
 	int		len;
+	size_t	pos;
 
 	pos = 0;
 	len = 0;
