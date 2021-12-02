@@ -15,17 +15,25 @@
 int	ft_printf(const char *s, ...)
 {
 	va_list	args;
-	size_t	pos;
+	size_t		pos;
+	int		len;
 
 	pos = 0;
+	len = 0;
 	va_start(args, s);
 	while (s[pos])
 	{
 		if (s[pos] == '%' && is_arg((int)s[pos + 1]))
-			pos += case_treatment((int)s[pos + 1], args);
+			pos += case_treatment((int)s[pos + 1], args, &len);
+		if (s[pos] == '%' && !is_arg((int)s[pos + 1]))
+		{
+			write(1, "%", 1);
+			len++;
+			pos++;
+		}
 		else
-			pos = case_text(s, pos);
+			pos = case_text(s, pos, &len);
 	}
 	va_end(args);
-	return (1);
+	return (len);
 }

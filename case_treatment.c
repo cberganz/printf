@@ -12,26 +12,23 @@
 
 #include "ft_printf.h"
 
-size_t	case_treatment(int c, va_list args)
+size_t	case_treatment(int c, va_list args, int *len)
 {
 	if (c == 'c')
-		ft_putchar_fd(va_arg(args, int), 1);
+		case_c(va_arg(args, int), 1, len);
 	else if (c == 's')
-		ft_putstr_fd(va_arg(args, char *), 1);
+		case_s(va_arg(args, char *), 1, len);
 	else if (c == 'p')
-	{
-		ft_putstr_fd("0x", 1);
-		ft_putnbr_base(va_arg(args, long long), "0123456789abcdef");
-	}
+		case_p(va_arg(args, unsigned long), "0123456789abcdef", len,0);
 	else if (c == 'd' || c == 'i')
-		ft_putnbr_fd(va_arg(args, int), 1);
+		case_i_d(va_arg(args, int), 1, len);
 	else if (c == 'u')
-		case_u(va_arg(args, unsigned int), 1);
+		case_u(va_arg(args, unsigned int), 1, len);
 	else if (c == 'x')
-		ft_putnbr_base(ft_abs(va_arg(args, int)), "0123456789abcdef");
+		case_hex(va_arg(args, int), "0123456789abcdef", len);
 	else if (c == 'X')
-		ft_putnbr_base(ft_abs(va_arg(args, int)), "0123456789ABCDEF");
+		case_hex(va_arg(args, int), "0123456789ABCDEF", len);
 	else if (c == '%')
-		ft_putchar_fd('%', 1);
+		case_c('%', 1, len);
 	return (2);
 }
