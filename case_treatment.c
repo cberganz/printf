@@ -6,7 +6,7 @@
 /*   By: cberganz <cberganz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 13:54:17 by cberganz          #+#    #+#             */
-/*   Updated: 2021/12/02 15:36:40 by cberganz         ###   ########.fr       */
+/*   Updated: 2021/12/03 13:40:47 by cberganz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	case_treatment(const char *s, va_list args, int *len)
 //	void (*func[case])(void, int) = {case_c, case_s, case_p, case_i_d, case_u, case_x, case_upperx, case_c};
 //	while (cases[case] && cases[case] != *s)
 //		case++;
-//	fpointers[case](, len);
+//	func[case](, len);
 	if (*s == 'c')
 		case_c(va_arg(args, int), len);
 	else if (*s == 's')
