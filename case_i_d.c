@@ -20,18 +20,18 @@ static int	ft_abs(int nb)
 		return (nb);
 }
 
-void	case_i_d(int n, int fd, int *len)
+void	case_i_d(int n, int *len)
 {
 	unsigned int	nrecu;
 
 	if (n < 0)
-		case_c('-', fd, len);
+		case_c('-', len);
 	nrecu = ft_abs(n);
 	if (nrecu >= 10)
 	{
-		case_i_d(nrecu / 10, fd, len);
-		case_c(nrecu % 10 + '0', fd, len);
+		case_i_d(nrecu / 10, len);
+		case_c(nrecu % 10 + '0', len);
 	}
 	else
-		case_c(nrecu + '0', fd, len);
+		case_c(nrecu + '0', len);
 }

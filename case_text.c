@@ -12,12 +12,15 @@
 
 #include "ft_printf.h"
 
-size_t	case_text(const char *s, size_t pos, int *len)
+size_t	case_text(const char *s, int *len)
 {
-	while (s[pos] && s[pos] != '%')
+	int	i;
+	
+	i = 0;
+	while (s[i] && s[i] != '%')
 	{
-		case_c(s[pos], 1, len);
-		pos++;
+		case_c(s[i], len);
+		i++;
 	}
-	return (pos);
+	return (i);
 }

@@ -12,13 +12,13 @@
 
 #include "ft_printf.h"
 
-void	case_u(unsigned int n, int fd, int *len)
+void	case_u(unsigned int n, int *len)
 {
 	if (n >= 10)
 	{
-		case_u(n / 10, fd, len);
-		case_c(n % 10 + '0', fd, len);
+		case_u(n / 10, len);
+		case_c(n % 10 + '0', len);
 	}
 	else
-		case_c(n + '0', fd, len);
+		case_c(n + '0', len);
 }

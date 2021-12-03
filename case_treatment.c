@@ -12,23 +12,29 @@
 
 #include "ft_printf.h"
 
-size_t	case_treatment(int c, va_list args, int *len)
+size_t	case_treatment(const char *s, va_list args, int *len)
 {
-	if (c == 'c')
-		case_c(va_arg(args, int), 1, len);
-	else if (c == 's')
-		case_s(va_arg(args, char *), 1, len);
-	else if (c == 'p')
-		case_p(va_arg(args, unsigned long), len, 0);
-	else if (c == 'd' || c == 'i')
-		case_i_d(va_arg(args, int), 1, len);
-	else if (c == 'u')
-		case_u(va_arg(args, unsigned int), 1, len);
-	else if (c == 'x')
-		case_hex(va_arg(args, int), "0123456789abcdef", len);
-	else if (c == 'X')
-		case_hex(va_arg(args, int), "0123456789ABCDEF", len);
-	else if (c == '%')
-		case_c('%', 1, len);
+//	char *cases = "cspdiuxX%";
+//	int case = 0;
+//	void (*func[case])(void, int) = {case_c, case_s, case_p, case_i_d, case_u, case_x, case_upperx, case_c};
+//	while (cases[case] && cases[case] != *s)
+//		case++;
+//	fpointers[case](, len);
+	if (*s == 'c')
+		case_c(va_arg(args, int), len);
+	else if (*s == 's')
+		case_s(va_arg(args, char *), len);
+	else if (*s == 'p')
+		case_p(va_arg(args, unsigned long), len);
+	else if (*s == 'd' || *s == 'i')
+		case_i_d(va_arg(args, int), len);
+	else if (*s == 'u')
+		case_u(va_arg(args, unsigned int), len);
+	else if (*s == 'x')
+		case_x(va_arg(args, int), len);
+	else if (*s == 'X')
+		case_upperx(va_arg(args, int), len);
+	else if (*s == '%')
+		case_c('%', len);
 	return (2);
 }

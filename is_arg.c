@@ -12,10 +12,8 @@
 
 #include "ft_printf.h"
 
-int	is_arg(int c)
+int	is_arg(const char *s)
 {
-	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i'
-		|| c == 'u' || c == 'x' || c == 'X' || c == '%')
-		return (1);
-	return (0);
+	return (*s == 'c' || *s == 's' || *s == 'p' || *s == 'd' || *s == 'i'
+		|| *s == 'u' || *s == 'x' || *s == 'X' || *s == '%');
 }

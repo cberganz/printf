@@ -16,23 +16,17 @@ int	ft_printf(const char *s, ...)
 {
 	va_list	args;
 	int		len;
-	size_t	pos;
 
-	pos = 0;
 	len = 0;
 	va_start(args, s);
-	while (s[pos])
+	while (*s)
 	{
-		if (s[pos] == '%' && is_arg((int)s[pos + 1]))
-			pos += case_treatment((int)s[pos + 1], args, &len);
-		if (s[pos] == '%' && !is_arg((int)s[pos + 1]))
-		{
-			write(1, "%", 1);
-			len++;
-			pos++;
-		}
+		if (*s == '%' && is_arg(s + 1))
+			s += case_treatment(s + 1, args, &len);
+		else if (*s == '%')
+			s += case_c('%', &len);
 		else
-			pos = case_text(s, pos, &len);
+			s += case_text(s, &len);
 	}
 	va_end(args);
 	return (len);

@@ -12,26 +12,28 @@
 
 #include "ft_printf.h"
 
-void	case_p(unsigned long nbr, int *len, int check)
+void	case_p(unsigned long nbr, int *len)
 {
 	char	*base;
+	static int	first_use;
 
 	base = "0123456789abcdef";
 	if (nbr == 0)
-		case_s("(nil)", 1, len);
+		case_s("(nil)", len);
 	else
 	{
-		if (check == 0)
+		if (first_use == 0)
 		{
-			case_s("0x", 1, len);
-			check = 1;
+			case_s("0x", len);
+			first_use = 1;
 		}
 		if (nbr >= 16)
 		{
-			case_p(nbr / 16, len, check);
-			case_c(base[nbr % 16], 1, len);
+			case_p(nbr / 16, len);
+			case_c(base[nbr % 16], len);
 		}
 		else
-			case_c(base[nbr], 1, len);
+			case_c(base[nbr], len);
 	}
+	first_use = 0;
 }

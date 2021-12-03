@@ -12,19 +12,16 @@
 
 #include "ft_printf.h"
 
-void	case_s(char *s, int fd, int *len)
+void	case_s(char *s, int *len)
 {
-	int	i;
-
-	if (s != NULL)
+	if (s)
 	{
-		i = 0;
-		while (s[i])
+		while (*s)
 		{
-			case_c(s[i], fd, len);
-			i++;
+			case_c(*s, len);
+			s++;
 		}
 	}
 	else
-		case_s("(null)", fd, len);
+		case_s("(null)", len);
 }

@@ -12,34 +12,38 @@
 
 NAME = libftprintf.a
 
-SRCS =  ft_printf.c			\
+HEADER = ft_printf.h
+
+SRC =  ft_printf.c			\
 		is_arg.c		\
 		case_treatment.c	\
 		case_text.c		\
 		case_c.c		\
 		case_s.c		\
 		case_i_d.c		\
+		case_u.c		\
 		case_p.c		\
-		case_hex.c		\
-		case_u.c
+		case_x.c		\
+		case_upperx.c
 		
+OBJ = $(SRC:.c=.o)
 			
 CC = gcc
 
-FLAGS = -Wall -Wextra -Werror -c
+CFLAGS = -Wall -Wextra -Werror
 
 INCLUDES = -I.
 
-OBJS = $(SRCS:.c=.o)
-
-$(NAME): $(OBJS)
-	$(CC) $(FLAGS) $(INCLUDES) $(SRCS)
-	ar -rcs $(NAME) $(OBJS)
-
 all: $(NAME)
 
+$(NAME): $(OBJ)
+	ar rcs $(NAME) $(OBJ)
+
+%.o: %.c $(HEADER)
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
 clean:
-	rm -rf $(OBJS)
+	rm -rf $(OBJ)
 
 fclean: clean
 	rm -rf $(NAME)

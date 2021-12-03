@@ -18,14 +18,15 @@
 # include <unistd.h>
 
 int		ft_printf(const char *s, ...);
-int		is_arg(int c);
-size_t	case_treatment(int c, va_list args, int *len);
-size_t	case_text(const char *s, size_t pos, int *len);
-void	case_c(int c, int fd, int *len);
-void	case_i_d(int n, int fd, int *len);
-void	case_s(char *s, int fd, int *len);
-void	case_u(unsigned int n, int fd, int *len);
-void	case_p(unsigned long nbr, int *len, int check);
-void	case_hex(unsigned int nbr, char *base, int *len);
+int		is_arg(const char *s);
+int		case_c(int c, int *len);
+size_t	case_treatment(const char *s, va_list args, int *len);
+size_t	case_text(const char *s, int *len);
+void	case_i_d(int n, int *len);
+void	case_s(char *s, int *len);
+void	case_u(unsigned int n, int *len);
+void	case_p(unsigned long nbr, int *len);
+void	case_x(unsigned int nbr, int *len);
+void	case_upperx(unsigned int nbr, int *len);
 
 #endif
