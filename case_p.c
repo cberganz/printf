@@ -15,25 +15,13 @@
 void	case_p(unsigned long nbr, int *len)
 {
 	char	*base;
-	static int	first_use;
 
 	base = "0123456789abcdef";
-	if (nbr == 0)
-		case_s("(nil)", len);
-	else
+	if (nbr >= 16)
 	{
-		if (first_use == 0)
-		{
-			case_s("0x", len);
-			first_use = 1;
-		}
-		if (nbr >= 16)
-		{
-			case_p(nbr / 16, len);
-			case_c(base[nbr % 16], len);
-		}
-		else
-			case_c(base[nbr], len);
+		case_p(nbr / 16, len);
+		case_c(base[nbr % 16], len);
 	}
-	first_use = 0;
+	else
+		case_c(base[nbr], len);
 }

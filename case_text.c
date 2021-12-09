@@ -6,7 +6,7 @@
 /*   By: cberganz <cberganz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 13:40:32 by cberganz          #+#    #+#             */
-/*   Updated: 2021/12/02 15:36:33 by cberganz         ###   ########.fr       */
+/*   Updated: 2021/12/07 17:36:22 by cberganz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 size_t	case_text(const char *s, int *len)
 {
 	int	i;
-	
+
 	i = 0;
 	while (s[i] && s[i] != '%')
 	{
